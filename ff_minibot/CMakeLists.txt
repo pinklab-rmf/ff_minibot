@@ -19,6 +19,7 @@ if (ament_cmake_FOUND)
       scripts/send_destination_request.py
       scripts/send_path_request.py
       scripts/send_mode_request.py
+      scripts/run_rviz.py
     DESTINATION lib/${PROJECT_NAME}
   )
 

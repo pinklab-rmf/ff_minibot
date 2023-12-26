@@ -1,5 +1,16 @@
 <?xml version='1.0' ?>
 <launch>
+  <arg name="map_file" default="$(find-pkg-share ff_minibot)/maps/pinklab_3.yaml"/>
+  <arg name="param_dir" default="$(find-pkg-share ff_minibot)/params"/>
+
+  <!-- launch the navigation -->
+  <include file="$(find-pkg-share minibot_navigation2)/launch/bringup_launch.py">
+    <arg name="map" value="$(var map_file)"/>
+    <arg name="params_file" value="$(var param_dir)/nav2_params.yaml"/>
+  </include>
+
+  <!-- launch rviz2 -->
+  <node pkg="ff_minibot" exec="run_rviz.py" name="run_rviz" output="screen"/>
 
   <!-- launch the free fleet client first -->
   <node name="minibot_free_fleet_client_node" pkg="free_fleet_client_ros2"
